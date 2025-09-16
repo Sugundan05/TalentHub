@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATS Resume Checker</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .ats-container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .ats-container h1 {
+      text-align: center;
+      color: #0077b6;
+      margin-bottom: 20px;
+    }
+    textarea {
+      width: 100%;
+      height: 150px;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+      resize: vertical;
+    }
+    button {
+      background: #0077b6;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #023e8a;
+    }
+    .result {
+      margin-top: 25px;
+      padding: 20px;
+      border-radius: 10px;
+      background: #f4f7fb;
+    }
+    .score {
+      font-size: 22px;
+      font-weight: bold;
+      color: #0077b6;
+    }
+    .missing {
+      margin-top: 15px;
+      color: #d00000;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+ <nav class="navbar">
+    <div class="logo">Talent<span>Hub</span></div>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="builder.html">Build Resume</a></li>
+      <li><a href="interiewtips.html">Interiew tips</a></li>
+        <li><a href="ats-checker.html">ATS Cheacker</a></li>
+                <li><a href="question.html">Interiew Questions</a></li>
+                  <li><a href="aptitude.html">Aptitude</a></li>
+                    <li><a href="interview-rounds.html">Interiew Format</a></li>
+    </ul>
+  </nav>
+
+  <!-- ATS Checker Section -->
+  <div class="ats-container">
+    <h1>ATS Resume Checker</h1>
+    <label><strong>Paste Your Resume:</strong></label>
+    <textarea id="resumeText" placeholder="Paste your resume text here..."></textarea>
+
+    <label><strong>Paste Job Description:</strong></label>
+    <textarea id="jobText" placeholder="Paste the job description here..."></textarea>
+
+    <button onclick="checkATS()">Check ATS Match</button>
+
+    <div class="result" id="resultBox" style="display:none;">
+      <p class="score">ATS Match Score: <span id="score">0%</span></p>
+      <p class="missing"><strong>Missing Keywords:</strong> <span id="missing"></span></p>
+    </div>
+  </div>
+ <footer>
+    <p>&copy; 2025 TalentHub | Designed by You</p>
+  </footer>
+
+
+  <!-- Script -->
+  <script>
+    function checkATS() {
+      const resume = document.getElementById("resumeText").value.toLowerCase();
+      const job = document.getElementById("jobText").value.toLowerCase();
+
+      if (!resume || !job) {
+        alert("Please paste both resume and job description!");
+        return;
+      }
+
+      // Extract keywords (simple split by space, you can improve later)
+      const jobKeywords = job.split(/[\s,.\n]+/).filter(word => word.length > 3);
+      const uniqueKeywords = [...new Set(jobKeywords)];
+
+      let matched = [];
+      let missing = [];
+
+      uniqueKeywords.forEach(word => {
+        if (resume.includes(word)) {
+          matched.push(word);
+        } else {
+          missing.push(word);
+        }
+      });
+
+      const score = Math.round((matched.length / uniqueKeywords.length) * 100);
+
+      document.getElementById("score").innerText = score + "%";
+      document.getElementById("missing").innerText = missing.length > 0 ? missing.join(", ") : "None 🎉";
+      document.getElementById("resultBox").style.display = "block";
+    }
+  </script>
+</body>
+</html>

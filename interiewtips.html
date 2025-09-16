@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TalentHub-Interview Preparation Tips</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <nav class="navbar">
+    <div class="logo">Talent<span>Hub</span></div>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="builder.html">Build Resume</a></li>
+      <li><a href="interiewtips.html">Interiew tips</a></li>
+        <li><a href="ats-checker.html">ATS Cheacker</a></li>
+                <li><a href="question.html">Interiew Questions</a></li>
+                  <li><a href="aptitude.html">Aptitude</a></li>
+                     <li><a href="interview-rounds.html">Interiew Format</a></li>
+    </ul>
+  </nav>
+  <div class="container">
+    <div class="tip-card">
+      <div class="tip-title">📌 Before the Interview</div>
+      <div class="tip-content">
+        ✅ Research the company <br>
+        ✅ Understand the role <br>
+        ✅ Prepare STAR method stories <br>
+        ✅ Revise your resume <br>
+        ✅ Practice common questions <br>
+      </div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-title">📌 On the Interview Day</div>
+      <div class="tip-content">
+        ✅ Dress professionally <br>
+        ✅ Arrive 10–15 minutes early <br>
+        ✅ Carry essentials (resume, notebook, pen) <br>
+        ✅ Test your tech setup for online interviews <br>
+      </div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-title">📌 During the Interview</div>
+      <div class="tip-content">
+        ✅ Maintain eye contact and smile <br>
+        ✅ Listen carefully before answering <br>
+        ✅ Be concise and confident <br>
+        ✅ Show enthusiasm <br>
+        ✅ Handle tricky questions calmly <br>
+      </div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-title">📌 After the Interview</div>
+      <div class="tip-content">
+        ✅ Send a thank-you email <br>
+        ✅ Reflect on your performance <br>
+        ✅ Follow up after a week if no response <br>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <footer>
+    <p>&copy; 2025 TalentHub | Designed by You</p>
+  </footer>
+
+  <script>
+    document.querySelectorAll(".tip-title").forEach(title => {
+      title.addEventListener("click", () => {
+        let content = title.nextElementSibling;
+        content.style.display =
+          content.style.display === "block" ? "none" : "block";
+      });
+    });
+  </script>
+</body>
+</html>
